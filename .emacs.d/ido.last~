@@ -1,0 +1,69 @@
+;;; -*- coding: utf-8 -*-
+
+;; ----- ido-last-directory-list -----
+(
+ ("/home/h/clojure/new_start/src/" . "new_start/")
+ ("/home/h/clojure/fwpd/" . "src/")
+ ("/home/h/clojure/starter/src/" . "starter/")
+ ("/home/h/clojure/fwpd/src/" . "fwpd/")
+ ("/home/h/.emacs.d/" . "customizations/")
+)
+
+;; ----- ido-work-directory-list -----
+(
+ "/home/h/clojure/new_start/src/new_start/"
+ "/home/h/clojure/starter/src/starter/"
+ "/home/h/clojure/fwpd/src/fwpd/"
+ "/home/h/.dotfiles/.emacs.d/"
+ "/home/h/"
+ "/home/h/.emacs.d/customizations/"
+ "/home/h/.dotfiles/.emacs.d/customizations/"
+ "/home/h/.emacs.d/"
+)
+
+;; ----- ido-work-file-list -----
+(
+ "core.clj"
+ "init.el"
+ "tester"
+ "ui.el"
+ "init.el.bak"
+)
+
+;; ----- ido-dir-file-cache -----
+(
+ ("/home/h/clojure/new_start/src/new_start/" (26278 46598 497699 239000) "core.clj" "../" "./" "core.clj~")
+
+ ("/home/h/clojure/new_start/" (26278 37533 400983 366000) "resources/" "README.md" "doc/" "../" "project.clj" "target/" ".gitignore" "./" "CHANGELOG.md" "test/" "LICENSE" ".hgignore" "src/" ".lein-repl-history")
+
+ ("/home/h/clojure/starter/src/starter/" (26278 33928 571262 582000) "core.clj" "../" "./")
+
+ ("/home/h/clojure/starter/" (26278 34102 40526 512000) "resources/" "README.md" "doc/" "../" "project.clj" "target/" ".gitignore" "./" "CHANGELOG.md" "test/" "LICENSE" ".hgignore" "src/" ".lein-repl-history")
+
+ ("/home/h/clojure/new_start/src/" (26278 30220 678967 5000) "new_start/" "../" "./")
+
+ ("/home/h/clojure/fwpd/src/fwpd/" (26041 40150 478617 32000) "core.clj" "../" "./")
+
+ ("/home/h/clojure/fwpd/" (26278 27736 928157 746000) "resources/" "README.md" "doc/" "../" "project.clj" "target/" ".gitignore" "./" "CHANGELOG.md" "test/" "LICENSE" ".hgignore" "src/" ".lein-repl-history" "suspects.csv")
+
+ ("/home/h/.dotfiles/.emacs.d/" (26042 57118 219216 293000) "cider-history" "README.md" "../" "elpa/" "ido.last" ".smex-items" "init.el" "auto-save-list/" "customizations/" ".gitignore" "./" "themes/" "init.el.bak" "backups/" "transient/" ".recentf" "projectile-bookmarks.eld")
+
+ ("/home/h/" (26041 39971 619799 650000) "dumb.ex.bak" ".slime-history.eld" "ride-4.4.3732-1_amd64.deb" "color_squares.js" "react/" "lua-5.4.4/" "resistors/" "zig-linux-x86_64-0.10.0.tar.xz" ".stack/" "autosave.lua" "cmake_tutorial/" "ratatui/" ".gradle/" "gen_words/" ".nim/" "library_test/" "LunarVim/" ".pki/" ".vimrc" "2022-06-25_18-01-28.mp4" "think_week/" ".node_repl_history" "discovery/" "clojure/" ".rustup/" ".python_history" "eng_game/" "../" "index.html" "exception/" ".hplip/" "ideas" ".mix/" "hash_memory.html" "dumb.ex" ".lein/" ".dotfiles/" "cc_macros/" "mushroom_version/" "dumb.lua" "klintonian_language" ".viminfo" ".tmux.conf" "emacs_cheatsheet.md" ".bash_history" ".bash_aliases" ".mozilla/" ".thunderbird/" "tab_renewal.pdf" "cooking_notes.md" ".local/" ".gnupg/" ".bash_functions" "docker/" ".ghc/" "PlatformIO/" ".cargo/" "Neovim-from-scratch/" "todo_28may.md" "intro_to_programming/" "./" "pattern_matching.md" "tmux_notes.md" "Obsidian-1.4.16.AppImage" "haskell/" "j10/" "twelve_apps.md" "pictures/" ".bashrc" ".lesshst" "assembly-intro/" "monad_applicative_functor.md" ".quicklisp/" "some.vim" "tui_example/" ".pub-cache/" ".dotnet/" ".kotlinc_history" ".npm/" ".slime/" ".sudo_as_admin_successful" "lsp/" "vimscript/" "c/" "aplcore" "mushroom_rust/" ".config/" "xml_test/" "linux_64_18.2.45405_unicode.x86_64.deb" "zig/" ".cache/" ".ssh/" "reading_list.html" "vacation_notes" "junk/" ".swp" "asm" "Test.py" "notes_thoughts.md" "kpp/" ".ghcup/" "bevy/" ".m2/" "perl/" "tui_mine/" ".zcompdump" "nim/" ".bash_logout" "license_renewal.pdf" ".hex/" ".clojure_history" ".swo" "Vault/" ".vscode/" ".zig/" ".dyalog/" "Downloads/" "elixir-getting-started-guide.epub" ".cabal/" ".dart/" ".irb_history" "laptop_battery_usadaptersdepot.pdf" ".platformio/" ".vim/" "snap/" "videos/" "ex_rust/" ".gitconfig" "guitar_lesson_meeting_code" "zig_junk/" "react_junk/" "js_junk/" "c_major_chords.xcf" "bash_aliases_bak" ".sbclrc" ".profile" ".emacs.d/" "to_containers/" ".git/" "stack_notes.md" "html_boiler")
+
+ ("/home/h/clojure/starter/src/" (25747 27657 544964 643000) "starter/" "../" "./")
+
+ ("/home/h/clojure/fwpd/src/" (25514 20570 984948 65000) "../" "./" "fwpd/")
+
+ ("/home/" (25267 13801 778583 458000) "../" "./" "h/")
+
+ ("/home/h/.emacs.d/customizations/" (25512 35932 514135 529000) "../" "misc.el" "navigation.el" "setup-js.el" "./" "editing.el" "shell-integration.el" "setup-clojure.el" "ui.el" "elisp-editing.el")
+
+ ("/home/h/.emacs.d/" (25512 38118 825051 234000) "README.md" "../" "elpa/" "ido.last" ".smex-items" "init.el" "auto-save-list/" "customizations/" ".gitignore" "./" "themes/" "init.el.bak" "backups/" ".recentf" "projectile-bookmarks.eld")
+
+ ("/home/h/.dotfiles/.emacs.d/customizations/" (25512 35932 514135 529000) "../" "misc.el" "navigation.el" "setup-js.el" "./" "editing.el" "shell-integration.el" "setup-clojure.el" "ui.el" "elisp-editing.el")
+
+ ("/home/h/.dotfiles/" (25512 37857 217457 146000) ".vimrc" "../" ".tmux.conf" ".bash_aliases" ".bash_functions" "settings.json" "./" ".bashrc" "nvim/" ".emacs.d/" ".git/")
+)
+
+;; ----- ido-unc-hosts-cache -----
+t
