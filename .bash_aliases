@@ -32,7 +32,6 @@ alias gd="git diff"
 alias cbtn="catkin build --this --no-deps"
 
 # General
-alias fd="fdfind"
 alias py="python3"
 alias xo="xdg-open"
 alias gre="grep -rin"
@@ -44,7 +43,6 @@ alias ey='echo "yes"'
 alias da="docker attach"
 alias tmux="TERM=screen-256color-bce tmux"
 alias tl="tmux ls"
-alias ext="export TERM=xterm-256color; cd; cp ~/to_host/.bashrc ~/.bashrc; . ~/.bashrc;"
 alias bat="batcat"
 alias bnw="brave-browser --new-window"
 alias rmbil="rm -rf build install log"

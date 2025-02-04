@@ -13,7 +13,6 @@
     "vim.useCtrlKeys": true,
     "workbench.startupEditor": "newUntitledFile",
     "window.zoomLevel": 1,
-    "workbench.colorTheme": "Argdown Dark (default dark + Argdown token highlighting)",
     "vim.leader": " ",
     "vim.normalModeKeyBindingsNonRecursive": [
         {

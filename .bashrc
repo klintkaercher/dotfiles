@@ -121,10 +121,15 @@ if [ -f ~/.bash_functions ]; then
     . ~/.bash_functions
 fi
 
-PATH=$PATH:~/.cargo/bin:~/.local/bin:~/zig:/usr/local/go/bin:~/.local/nvim-linux64/bin
+PATH=$PATH:~/.cargo/bin:~/.local/bin:~/zig:/usr/local/go/bin:~/.local/nvim-linux64/bin:~/.local/pandoc-3.6.1/bin/
 
 . "$HOME/.cargo/env"
 [ -f "/home/klint/.ghcup/env" ] && source "/home/klint/.ghcup/env" # ghcup-env
 
 shopt -s autocd
+
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
