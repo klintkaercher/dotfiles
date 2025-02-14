@@ -1,22 +1,23 @@
 #!/bin/bash
 
-uv() {
-  sed -i "s/version>[0-9]\.[0-9]\.[0-9]/version>$1/" **/package.xml \
-    && git commit -am "Update package.xml versions to $1." \
-    && git push
+# Either `git status` if no arg, or tries jj
+gs() {
+  if [[ -z "$1" ]]; then
+    git status
+  elif [[ $(git tag --list) =~ "$1" ]]; then
+      git switch -d "$1"
+  elif ! git switch "$1"; then
+    git switch -c "$1"
+  fi
 }
 
-gtl() {
-  git tag --list | sort -Vr
-}
-
-pv() {
-  rg  'version>' -g package.xml
-}
-
-gcm() {
-  git commit -am "Update package.xml versions to $1." \
-    && git push
+# Git commit with either a commit string or squash it into the previous commit.
+gco() {
+  if [[ -n $1 ]]; then
+    git commit -m "$1"
+  else
+    git commit -a --amend --no-edit --date=now
+  fi
 }
 
 # This function will just dump a bunch of html files into the current directory.
