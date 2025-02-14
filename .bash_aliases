@@ -18,7 +18,7 @@ alias gl="git log --oneline"
 alias gll="git log --oneline --graph"
 alias gb="git branch"
 alias gd="git diff"
-alias gca="git commit -a --amend --no-edit"
+alias gca="git commit -a --amend --no-edit --date=now"
 
 # General
 alias py="python3"
