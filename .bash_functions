@@ -170,6 +170,7 @@ ctr() {
   colcon test-result $rest
 }
 
+# This is the function you want to use and it's usage is just `ct <PACKAGE_NAME>`.
 ct() {
   if [[ $1 = "r" ]]; then
     if [[ -n $2 ]]; then

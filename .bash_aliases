@@ -16,9 +16,9 @@ alias gfo="git fetch origin"
 alias gl="git log --oneline --graph"
 alias gb="git branch"
 alias gd="git diff"
-alias gr="git restore ."
+alias gres="git restore ."
 alias gcf="git clean -f ."
-alias gp="git push"
+alias gp="git pull"
 
 # General
 alias py="python3"
