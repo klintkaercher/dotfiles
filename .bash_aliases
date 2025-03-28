@@ -14,11 +14,12 @@ alias sf="g++ -Wall -Wextra -pthread -std=c++2a -fconcepts main.cpp && ./a.out"
 # Git
 alias gfo="git fetch origin"
 alias gl="git log --oneline --graph"
-alias gb="git branch"
+alias gb="git branch -vv"
 alias gd="git diff"
 alias gres="git restore ."
 alias gcf="git clean -f ."
 alias gp="git pull"
+alias gca="git commit --amend --message"
 
 # General
 alias py="python3"

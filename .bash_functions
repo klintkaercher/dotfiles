@@ -4,17 +4,19 @@
 gs() {
   if [[ -z "$1" ]]; then
     git status
+  elif [[ "$1" -eq "-c" ]] && [[ -n $2 ]]; then
+    git switch -c "$2"
   elif [[ $(git tag --list) =~ "$1" ]]; then
       git switch -d "$1"
   elif ! git switch "$1"; then
-    git switch -c "$1"
+    echo "BRANCH $1 DOESN'T EXIST."
   fi
 }
 
 # Git commit with either a commit string or squash it into the previous commit.
 gco() {
   if [[ -n $1 ]]; then
-    git commit -m "$1"
+    git commit -am "$1"
   else
     git commit -a --amend --no-edit --date=now
   fi
@@ -40,11 +42,12 @@ cbc() {
 
   local how=""
   local package=""
+  local test=0
 
   if [[ $1 = "s" ]] || [[ $1 = "select" ]] || [[ $2 = "s" ]] || [[ $2 = "select" ]]; then
     how="--packages-select"
   fi
-  test=0
+
   if [[ $1 = "t" ]] || [[ $1 = "test" ]] || [[ $2 = "t" ]] || [[ $2 = "test" ]]; then
     test=1
   fi
@@ -61,6 +64,10 @@ cbc() {
   if [[ -z $how ]] && [[ $test -eq 1 ]] && [[ -n $2 ]]; then
     package="$2"
     how="--packages-up-to"
+  fi
+
+  if [[ -n $how ]] && [[ $test -eq 0 ]] && [[ -n $2 ]]; then
+    package="$2"
   fi
 
   if [[ $test -eq 0 ]] && [[ -n $package ]]; then
