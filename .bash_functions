@@ -22,12 +22,83 @@ gco() {
   fi
 }
 
+# Git commit with either a commit string or squash it into the previous commit.
+gca() {
+  if [[ -n $1 ]]; then
+    git commit --amend --message "$1"
+  else
+    git commit --amend
+  fi
+}
+
 # This function will just dump a bunch of html files into the current directory.
 # `gcov_run <PACKAGE_ROOT> <PACKAGE_NAME>`
 # Ex.
 # `gcov_run src/general/rtk_common/rtk_ros_utils rtk_ros_utils`
 gcov_run() {
   gcovr -j 8 -r $1 build/$2 install/ --html-details --html-medium-threshold 60 --html-high-threshold 80 -o $2.html
+}
+
+# Colcon build everything with continue-on-error, limited threads/workers, and RelWithDebInfo.
+# MAKEFLAGS and --parallel-workers limits our threads/workers.
+# --continue-on-error I've found is always desirable. Without it, colcon stops at first failed package.
+# RelWithDebInfo needs to be there, otherwise you run into performance issues after deploying to vehicle.
+cbc4() {
+  if [[ -z $1 ]]; then
+    MAKEFLAGS="-j4 -l4" colcon build --continue-on-error --parallel-workers 4 --cmake-args -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_EXPORT_COMPILE_COMMANDS=1
+    return 0
+  fi
+
+  local how=""
+  local package=""
+  local test=0
+
+  if [[ $1 = "s" ]] || [[ $1 = "select" ]] || [[ $2 = "s" ]] || [[ $2 = "select" ]]; then
+    how="--packages-select"
+  fi
+
+  if [[ $1 = "t" ]] || [[ $1 = "test" ]] || [[ $2 = "t" ]] || [[ $2 = "test" ]]; then
+    test=1
+  fi
+
+  if [[ -n $3 ]]; then
+    package="$3"
+  fi
+
+  if [[ -z $how ]] && [[ $test -eq 0 ]] && [[ -n $1 ]]; then
+    package="$1"
+    how="--packages-up-to"
+  fi
+
+  if [[ -z $how ]] && [[ $test -eq 1 ]] && [[ -n $2 ]]; then
+    package="$2"
+    how="--packages-up-to"
+  fi
+
+  if [[ -n $how ]] && [[ $test -eq 0 ]] && [[ -n $2 ]]; then
+    package="$2"
+  fi
+
+  if [[ $test -eq 0 ]] && [[ -n $package ]]; then
+    MAKEFLAGS="-j4 -l4" colcon build --continue-on-error --parallel-workers 4 $how $package \
+      --cmake-args -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_EXPORT_COMPILE_COMMANDS=1
+  elif [[ $test -eq 1 ]] && [[ -z $package ]]; then
+    # cta
+    MAKEFLAGS="-j4 -l4" colcon build --continue-on-error --parallel-workers 4 \
+      --cmake-args \
+      -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+      -DCMAKE_CXX_FLAGS='-fprofile-arcs -ftest-coverage --coverage' \
+      -DCMAKE_C_FLAGS='-fprofile-arcs -ftest-coverage --coverage' \
+      -DCMAKE_EXPORT_COMPILE_COMMANDS=1
+  elif [[ $test -eq 1 ]] && [[ -n $package ]]; then
+    # cta
+    MAKEFLAGS="-j4 -l4" colcon build --continue-on-error --parallel-workers 4  $how $package \
+      --cmake-args \
+      -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+      -DCMAKE_CXX_FLAGS='-fprofile-arcs -ftest-coverage --coverage' \
+      -DCMAKE_C_FLAGS='-fprofile-arcs -ftest-coverage --coverage' \
+      -DCMAKE_EXPORT_COMPILE_COMMANDS=1
+  fi
 }
 
 # Colcon build everything with continue-on-error, limited threads/workers, and RelWithDebInfo.

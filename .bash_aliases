@@ -19,7 +19,6 @@ alias gd="git diff"
 alias gres="git restore ."
 alias gcf="git clean -f ."
 alias gp="git pull"
-alias gca="git commit --amend --message"
 
 # General
 alias py="python3"

@@ -102,6 +102,8 @@ vim.keymap.set("n", "<leader>u", ":UndotreeToggle<CR>")
 vim.keymap.set("v", "<leader>c", '"+y')
 vim.keymap.set("n", "<leader>bn", ":bn<CR>")
 vim.keymap.set("n", "<leader>bb", ":bp<CR>")
+vim.keymap.set("n", "<leader>fm", ":lua vim.lsp.buf.format()<CR>")
+vim.keymap.set("n", "<leader>vs", ":vs<CR>")
 
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
@@ -164,7 +166,7 @@ require("lazy").setup({
 	"wellle/context.vim", -- function headers
 	"hasufell/ghcup.vim", -- GHCup
 	"ziglang/zig.vim", -- Zig
-	"Olical/conjure", -- Clojure integrations
+	-- "Olical/conjure", -- Clojure integrations
 	"guns/vim-sexp", -- S-Expression handling
 	"MrcJkb/haskell-tools.nvim", -- Haskell Tooling
 
