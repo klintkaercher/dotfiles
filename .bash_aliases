@@ -36,4 +36,5 @@ alias rmbil="rm -rf build install log"
 alias xcli="xclip -sel clipboard"
 alias bbr="rlwrap bb"
 alias n="nvim"
+alias ls="eza"
 
