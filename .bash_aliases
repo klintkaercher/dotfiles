@@ -5,6 +5,7 @@ export EDITOR="nvim"
 alias ..="cd ../"
 alias ...="cd ../../"
 alias ....="cd ../../../"
+alias a="z"
 
 # C++
 alias ga="g++ -Wall -Wextra -pthread -std=c++2a -fconcepts main.cpp"
@@ -33,4 +34,5 @@ alias bnw="brave-browser --new-window"
 alias rmbil="rm -rf build install log"
 alias xcli="xclip -sel clipboard"
 alias bbr="rlwrap bb"
+alias n="nvim"
 

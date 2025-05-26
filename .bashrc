@@ -128,6 +128,8 @@ export PATH=$PATH\
 :~/.local/pandoc/bin\
 :~/.local/roc
 
+export MANPAGER="nvim +Man!"
+
 . "$HOME/.cargo/env"
 
 [ -f "~/.ghcup/env" ] && source "~/.ghcup/env" # ghcup-env

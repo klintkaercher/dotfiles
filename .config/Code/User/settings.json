@@ -41,4 +41,12 @@
     "doxdocgen.generic.returnTemplate": "\\return {type} ",
     "rust-analyzer.server.path": null,
     "rust-analyzer.inlayHints.typeHints.hideClosureInitialization": true,
+    "remote.defaultExtensionsIfInstalledLocally": [
+        "GitHub.copilot",
+        "GitHub.copilot-chat",
+        "GitHub.vscode-pull-request-github"
+    ],
+    "[typescriptreact]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
 }
