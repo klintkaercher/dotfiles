@@ -20,6 +20,7 @@ alias gd="git diff"
 alias gres="git restore ."
 alias gcf="git clean -f ."
 alias gp="git pull"
+alias gsb="git switch -"
 
 # General
 alias py="python3"
