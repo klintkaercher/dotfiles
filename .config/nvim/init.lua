@@ -6,7 +6,7 @@ vim.g.maplocalleader = " "
 vim.opt.guicursor = "n-v-i-c:block-Cursor"
 
 -- Set to true if you have a Nerd Font installed
-vim.g.have_nerd_font = false
+vim.g.have_nerd_font = true
 
 -- [[ Setting options ]]
 -- See `:help vim.opt`
@@ -525,7 +525,7 @@ require("lazy").setup({
 						},
 					},
 				},
-				-- zls = {},
+				zls = {},
 				-- -- hls = {}, -- ghcup should give us this
 				-- gopls = {},
 
@@ -608,7 +608,10 @@ require("lazy").setup({
 			formatters_by_ft = {
 				lua = { "stylua" },
 				-- Conform can also run multiple formatters sequentially
-				-- python = { "isort", "black" },
+				python = { "black" },
+				rust = { "rustfmt", lsp_format = "fallback" },
+				roc = { lsp_format = "fallback" },
+				cpp = { lsp_format = "fallback" },
 				--
 				-- You can use a sub-list to tell conform to run *until* a formatter
 				-- is found.
@@ -830,6 +833,7 @@ require("lazy").setup({
 })
 
 require("lspconfig").zls.setup({})
+require("lspconfig").roc_ls.setup({})
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

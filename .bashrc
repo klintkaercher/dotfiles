@@ -126,13 +126,14 @@ export PATH=$PATH\
 :~/.cargo/bin\
 :~/.local/zig\
 :~/.local/pandoc/bin\
-:~/.local/roc
+:~/.local/roc\
+:~/.luarocks/bin
 
 export MANPAGER="nvim +Man!"
 
 . "$HOME/.cargo/env"
 
-[ -f "~/.ghcup/env" ] && source "~/.ghcup/env" # ghcup-env
+[ -f "$HOME/.ghcup/env" ] && source "$HOME/.ghcup/env" # ghcup-env
 
 shopt -s autocd
 
