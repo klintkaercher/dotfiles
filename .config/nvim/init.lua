@@ -611,7 +611,7 @@ require("lazy").setup({
 				python = { "black --target-version py310" },
 				rust = { "rustfmt", lsp_format = "fallback" },
 				roc = { lsp_format = "fallback" },
-				cpp = { lsp_format = "fallback" },
+				cpp = { "clang-format", lsp_format = "fallback" },
 				go = { lsp_format = "fallback" },
 				--
 				-- You can use a sub-list to tell conform to run *until* a formatter
