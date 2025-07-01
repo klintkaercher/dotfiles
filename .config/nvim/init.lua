@@ -526,7 +526,7 @@ require("lazy").setup({
 					},
 				},
 				zls = {},
-				-- -- hls = {}, -- ghcup should give us this
+				-- hls = {}, -- ghcup should give us this
 				gopls = {},
 
 				--
@@ -608,7 +608,7 @@ require("lazy").setup({
 			formatters_by_ft = {
 				lua = { "stylua" },
 				-- Conform can also run multiple formatters sequentially
-				python = { "black" },
+				python = { "black --target-version py310" },
 				rust = { "rustfmt", lsp_format = "fallback" },
 				roc = { lsp_format = "fallback" },
 				cpp = { lsp_format = "fallback" },
