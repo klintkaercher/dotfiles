@@ -76,8 +76,8 @@ vim.keymap.set("n", "<leader>ba", "<cmd>lua vim.lsp.buf.format()<CR>")
 
 vim.opt.rnu = true
 vim.opt.swapfile = false
-vim.opt.tabstop = 8
-vim.opt.softtabstop = 0
+vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
 vim.opt.expandtab = true
 vim.opt.shiftwidth = 4
 vim.opt.smarttab = true
@@ -527,7 +527,7 @@ require("lazy").setup({
 				},
 				zls = {},
 				-- -- hls = {}, -- ghcup should give us this
-				-- gopls = {},
+				gopls = {},
 
 				--
 				-- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs

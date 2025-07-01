@@ -127,6 +127,7 @@ export PATH=$PATH\
 :~/.local/zig\
 :~/.local/pandoc/bin\
 :~/.local/roc\
+:~/.local/go/bin\
 :~/.luarocks/bin
 
 export MANPAGER="nvim +Man!"
