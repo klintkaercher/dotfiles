@@ -12,6 +12,18 @@ gs() {
     echo "BRANCH $1 DOESN'T EXIST."
   fi
 }
+_gs_completion() {
+    local cur="${COMP_WORDS[COMP_CWORD]}"
+    local prev="${COMP_WORDS[COMP_CWORD-1]}"
+    if [[ $COMP_CWORD -ge 2 ]]; then
+        COMPREPLY=()
+    else
+        local branches=$(git branch -r 2> /dev/null | sd "origin/HEAD.*" "" | sd "origin/" "")
+        COMPREPLY=($(compgen -W "$branches $COMP_CWORD" -- "$cur"))
+    fi
+}
+
+complete -F _gs_completion gs
 
 # Git commit with either a commit string or squash it into the previous commit.
 gco() {
@@ -101,6 +113,8 @@ cbc4() {
   fi
 }
 
+export -f cbc4
+
 # Colcon build everything with continue-on-error, limited threads/workers, and RelWithDebInfo.
 # MAKEFLAGS and --parallel-workers limits our threads/workers.
 # --continue-on-error I've found is always desirable. Without it, colcon stops at first failed package.
@@ -163,90 +177,7 @@ cbc() {
   fi
 }
 
-cb() {
-  cbc "$@"
-}
-
-# Colcon build a specific package and its dependencies with continue-on-error, limited threads/workers, and RelWithDebInfo.
-# MAKEFLAGS and --parallel-workers limits our threads/workers.
-# --continue-on-error I've found is always desirable. Without it, colcon stops at first failed package.
-# RelWithDebInfo needs to be there, otherwise you run into performance issues after deploying to vehicle.
-cbp() {
-  MAKEFLAGS="-j8 -l8" colcon build --continue-on-error --parallel-workers 8 --packages-up-to $1 \
-    --cmake-args -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_EXPORT_COMPILE_COMMANDS=1
-}
-
-cbps() {
-  MAKEFLAGS="-j8 -l8" colcon build --continue-on-error --parallel-workers 8 --packages-select $1 \
-    --cmake-args -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_EXPORT_COMPILE_COMMANDS=1
-}
-
-ctp() {
-  colcon test --return-code-on-test-failure --retest-until-fail 2 --packages-select $1
-}
-
-# Colcon build a specific package and its dependencies with continue-on-error, limited threads/workers,
-# RelWithDebInfo, and flags set up for testing.
-# MAKEFLAGS and --parallel-workers limits our threads/workers.
-# --continue-on-error I've found is always desirable. Without it, colcon stops at first failed package.
-# RelWithDebInfo needs to be there, otherwise you run into performance issues after deploying to vehicle.
-# \param $1 = name of package or thread number
-# \param $2 = name of package when $1 has thread number
-cbpt() {
-  how="packages-up-to"
-  if [[ $1 = "s" ]]; then
-    how="packages-select"
-  fi
-
-  package="$1"
-  if [[ -n $2 ]]; then
-    package="$2"
-  fi
-
-  MAKEFLAGS="-j8 -l8" colcon build --continue-on-error --parallel-workers 8 --$how $package \
-    --cmake-args \
-    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
-    -DCMAKE_CXX_FLAGS='-fprofile-arcs -ftest-coverage --coverage' \
-    -DCMAKE_C_FLAGS='-fprofile-arcs -ftest-coverage --coverage' \
-    -DCMAKE_EXPORT_COMPILE_COMMANDS=1 \
-    && ctp $package
-}
-
-cbpts() {
-  package="$1"
-
-  MAKEFLAGS="-j8 -l8" colcon build --continue-on-error --parallel-workers 8 --packages-select $package \
-    --cmake-args \
-    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
-    -DCMAKE_CXX_FLAGS='-fprofile-arcs -ftest-coverage --coverage' \
-    -DCMAKE_C_FLAGS='-fprofile-arcs -ftest-coverage --coverage' \
-    -DCMAKE_EXPORT_COMPILE_COMMANDS=1
-}
-
-# Colcon build all packages with testing flags.
-cta() {
-  MAKEFLAGS="-j8 -l8" colcon build --continue-on-error --parallel-workers 8 \
-    --cmake-args \
-    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
-    -DCMAKE_CXX_FLAGS='-fprofile-arcs -ftest-coverage --coverage' \
-    -DCMAKE_C_FLAGS='-fprofile-arcs -ftest-coverage --coverage' \
-    -DCMAKE_EXPORT_COMPILE_COMMANDS=1
-}
-
-# Colcon build all packages with testing flags and then run the tests.
-ctt() {
-  cta
-  colcon test --return-code-on-test-failure --retest-until-fail 2
-}
-
-# colcon test-result with package name passing
-ctr() {
-  rest=""
-  if [[ -n $1 ]]; then
-    rest="--test-result-base ./build/$1"
-  fi
-  colcon test-result $rest
-}
+export -f cbc
 
 # This is the function you want to use and it's usage is just `ct <PACKAGE_NAME>`.
 ct() {
