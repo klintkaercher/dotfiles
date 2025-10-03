@@ -611,5 +611,5 @@ require("lazy").setup({
 		},
 	},
 })
-require("lspconfig").zls.setup({})
-require("lspconfig").roc_ls.setup({})
+vim.lsp.config("zls", {})
+vim.lsp.config("roc_ls", {})

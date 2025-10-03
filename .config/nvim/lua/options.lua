@@ -62,7 +62,7 @@ vim.opt.splitright = true
 vim.opt.splitbelow = true
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
-vim.opt.expandtab = vim.bo.filetype == "lua" or vim.bo.filetype == "go"
+vim.opt.expandtab = vim.bo.filetype ~= "lua" and vim.bo.filetype ~= "go"
 vim.opt.shiftwidth = 4
 vim.opt.smarttab = true
 vim.opt.smartindent = true
