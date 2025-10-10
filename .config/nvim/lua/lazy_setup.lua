@@ -372,6 +372,7 @@ require("lazy").setup({
 				rust = { "rustfmt", lsp_format = "fallback" },
 				roc = { lsp_format = "fallback" },
 				cpp = { "clang-format", lsp_format = "fallback" },
+				c = { "clang-format", lsp_format = "fallback" },
 				go = { lsp_format = "fallback" },
 				--
 				-- You can use a sub-list to tell conform to run *until* a formatter
@@ -416,6 +417,22 @@ require("lazy").setup({
 			-- See `:help cmp`
 			local cmp = require("cmp")
 			local luasnip = require("luasnip")
+			-- Working here for a custom luasnip.
+			local s = luasnip.snippet
+			local t = luasnip.text_node
+			local i = luasnip.insert_node
+			luasnip.add_snippets("c", {
+				-- This could be fixed up with luasnips.extras, but we don't have that yet, and it might be overkill at this point.
+				-- local fmt = require("luasnips.extras.fmt").fmt
+				s("fori", {
+					t("for (size_t i = 0; i < "),
+					i(1, "length_variable"),
+					t({ "; i++) {", "    " }),
+					i(2, "// body"),
+					t({ "", "}" }),
+				}),
+			})
+			-- End working here for a custom luasnip.
 			luasnip.config.setup({})
 
 			cmp.setup({
