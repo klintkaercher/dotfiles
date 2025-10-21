@@ -1,0 +1,18 @@
+IndentWidth: 4
+AlignConsecutiveAssignments: Consecutive
+AlwaysBreakTemplateDeclarations: Yes
+BinPackArguments: true
+BinPackParameters: true
+# BreakBeforeBinaryOperators: NonAssignment
+BreakBeforeBinaryOperators: All
+# PointerAlignment: Left
+AlignOperands: DontAlign
+
+
+# testing
+# AllowShortIfStatementsOnASingleLine: OnlyFirstIf
+AllowShortIfStatementsOnASingleLine: true
+AllowShortBlocksOnASingleLine: Always
+# AllowShortFunctionsOnASingleLine: All
+# AllowShortLoopsOnASingleLine: true
+# AllowShortCaseLabelsOnASingleLine: true
