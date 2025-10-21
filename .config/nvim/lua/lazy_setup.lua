@@ -432,6 +432,39 @@ require("lazy").setup({
 					t({ "", "}" }),
 				}),
 			})
+			luasnip.add_snippets("zig", {
+				s("println", {
+					t('std.debug.print("'),
+					i(1),
+					t('\\n", .{'),
+					i(2),
+					t("});"),
+				}),
+			})
+			luasnip.add_snippets("cpp", {
+				s("fori", {
+					t("for (usize i = 0; i < "),
+					i(1, "length_variable"),
+					t({ "; i++) {", "    " }),
+					i(2, "// body"),
+					t({ "", "}" }),
+				}),
+			})
+			luasnip.add_snippets("cpp", {
+				s("forc", {
+					t("for (const auto &it : "),
+					i(1, "iterable"),
+					t({ ") {", "    " }),
+					i(2, "// body"),
+					t({ "", "}" }),
+				}),
+			})
+			luasnip.add_snippets("cpp", {
+				s("coff", t("// clang-format off")),
+			})
+			luasnip.add_snippets("cpp", {
+				s("con", t("// clang-format on")),
+			})
 			-- End working here for a custom luasnip.
 			luasnip.config.setup({})
 
@@ -628,5 +661,5 @@ require("lazy").setup({
 		},
 	},
 })
-vim.lsp.config("zls", {})
+
 vim.lsp.config("roc_ls", {})
