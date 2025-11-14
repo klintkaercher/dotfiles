@@ -5,14 +5,10 @@ BinPackArguments: true
 BinPackParameters: true
 # BreakBeforeBinaryOperators: NonAssignment
 BreakBeforeBinaryOperators: All
-# PointerAlignment: Left
 AlignOperands: DontAlign
-
-
-# testing
-# AllowShortIfStatementsOnASingleLine: OnlyFirstIf
 AllowShortIfStatementsOnASingleLine: true
+InsertBraces: true
+AllowShortFunctionsOnASingleLine: None
 AllowShortBlocksOnASingleLine: Always
-# AllowShortFunctionsOnASingleLine: All
-# AllowShortLoopsOnASingleLine: true
-# AllowShortCaseLabelsOnASingleLine: true
+BreakAfterAttributes: Always
+

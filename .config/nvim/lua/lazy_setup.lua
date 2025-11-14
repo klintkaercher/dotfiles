@@ -265,6 +265,14 @@ require("lazy").setup({
 				pyright = {},
 
 				-- These are built other places and configured at the bottom of this file.
+				-- NOTE: This is an attempt to try to get the includes from zig in clangd.
+				-- clangd = {
+				-- 	cmd = {
+				-- 		"clangd",
+				-- 		"--log=verbose",
+				-- 		"--query-driver=**/zig-cc.cmd,**/zig-cc,**/zig-c++.cmd,**/zig-c++",
+				-- 	},
+				-- },
 				clangd = {},
 				clojure_lsp = {},
 				vimls = {},
@@ -371,7 +379,7 @@ require("lazy").setup({
 				python = { "black" },
 				rust = { "rustfmt", lsp_format = "fallback" },
 				roc = { lsp_format = "fallback" },
-				cpp = { "clang-format", lsp_format = "fallback" },
+				cpp = { "clang-format-15", lsp_format = "fallback" },
 				c = { "clang-format", lsp_format = "fallback" },
 				go = { lsp_format = "fallback" },
 				--
@@ -465,6 +473,25 @@ require("lazy").setup({
 			luasnip.add_snippets("cpp", {
 				s("con", t("// clang-format on")),
 			})
+			luasnip.add_snippets("cpp", {
+				s("t1", t("template <typename T>")),
+			})
+			luasnip.add_snippets("cpp", {
+				s("t2", t("template <typename T, typename U>")),
+			})
+			luasnip.add_snippets("cpp", {
+				s("l1", { t("[](auto it) { return "), i(1), t("; }") }),
+			})
+			luasnip.add_snippets("cpp", {
+				s("ifi", {
+					t("if (auto it = "),
+					i(1, "value"),
+					t({ "; it) {", "    " }),
+					i(2, "//body"),
+					t({ "", "}" }),
+				}),
+			})
+			-- SNIPPET
 			-- End working here for a custom luasnip.
 			luasnip.config.setup({})
 
