@@ -1,31 +1,3 @@
-"Plugin (vim-plug)
-call plug#begin('~/.vim/plugged')
-Plug 'morhetz/gruvbox' " CS
-Plug 'arcticicestudio/nord-vim' " CS
-Plug 'flrnprz/plastic.vim' " CS
-Plug 'flrnd/candid.vim' " CS
-Plug 'dylnmc/novum.vim' " CS
-Plug 'arzg/vim-colors-xcode' " CS
-Plug 'sainnhe/sonokai' " CS
-
-Plug 'tpope/vim-fugitive' " Git
-Plug 'tpope/vim-surround' " Surround
-Plug 'mbbill/undotree' " Undo history
-Plug 'neoclide/coc.nvim', {'branch': 'release'} " coc
-Plug 'ctrlpvim/ctrlp.vim' " File search
-Plug 'scrooloose/nerdtree'
-Plug 'vim-scripts/DoxygenToolkit.vim' " Doxygen Commenting
-"Plug 'ludovicchabant/vim-gutentags' " Doxygen Commenting
-Plug 'jremmen/vim-ripgrep'
-Plug 'hasufell/ghcup.vim/' " GHCup
-Plug 'wellle/context.vim' " function headers
-
-Plug 'elixir-editors/vim-elixir/' " Elixir syntax
-Plug 'ziglang/zig.vim' " Zig syntax
-Plug 'zah/nim.vim' " Nim syntax
-Plug 'udalov/kotlin-vim' " Nim syntax
-call plug#end()
-
 " Settings
 set noerrorbells
 set tabstop=8 softtabstop=0 expandtab shiftwidth=2 smarttab
@@ -90,14 +62,8 @@ nnoremap + :resize +5<CR>
 nnoremap { :vertical resize -5<CR>
 nnoremap } :vertical resize +5<CR>
 
-"NERDTree
-nnoremap <leader>n :NERDTreeToggle<CR>
-nnoremap <C-n> :NERDTree<CR>
-nnoremap <C-f> :NERDTreeFind<CR>
-
 " Colorscheme
 syntax on
-colorscheme sonokai
 "colorscheme peachpuff " useful for outdoor environments
 
 " search on visual selection (not sure how this works)
@@ -156,69 +122,3 @@ augroup commenting
 
     autocmd FileType markdown   set cc=0
 augroup END
-
-" Plugin Specific
-if executable('rg')
-    let g:rg_derive_root='true'
-endif
-
-" Need to escape the pipe character.
-nnoremap <leader>u :UndotreeToggle \| UndotreeFocus<CR>
-nnoremap <leader>gb :Git blame<CR>
-
-
-
-
-" Some commands to scroll coc output from https://github.com/neoclide/coc.nvim
-" Remap <C-f> and <C-b> to scroll float windows/popups
-if has('nvim-0.4.0') || has('patch-8.2.0750')
-  nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
-  nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
-  inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
-  inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
-  vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
-  vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
-endif
-
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-nmap <leader>rn <Plug>(coc-rename)
-
-" Use K to show documentation in preview window
-nnoremap <silent> K :call ShowDocumentation()<CR>
-
-function! ShowDocumentation()
-  if CocAction('hasProvider', 'hover')
-    call CocActionAsync('doHover')
-  else
-    call feedkeys('K', 'in')
-  endif
-endfunction
-
-" Search workspace symbols
-nnoremap <silent><nowait> <space>y  :<C-u>CocList -I symbols<cr>
-nnoremap <silent><nowait> <space>w  :<C-u>CocList commands<cr>
-
-
-
-
-
-let g:ctrlp_working_path_mode = ""
-let g:coc_disable_startup_warning = 1
-let g:DoxygenToolkit_commentType = "RTK"
-let g:gutentags_exclude_project_root = ["/home/klint/"]
-
-" Custom commands that take parameters.
-" These aren't really that useful, but show an example of how to make commands
-command -nargs=1 SW set shiftwidth=<args>
-command -nargs=1 CC set cc=<args>
-command WW set wrap linebreak | nnoremap j gj | nnoremap k gk
-command EE !pdflatex *.tex
-command CNT %s///gn
-command TypeA :call TypeA()
-
-function! TypeA()
-  :%s/brief/spaghetti/c
-endfunction

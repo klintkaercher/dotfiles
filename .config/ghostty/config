@@ -44,9 +44,11 @@
 #
 
 # command = fish
-theme = Builtin Solarized Dark
+theme = Solarized Dark Patched
+# theme = iTerm2 Solarized Light
 cursor-style = block
-# shell-integration-features = no-cursor # This is to keep the cursor a block.
+cursor-style-blink = false
+shell-integration-features = no-cursor
 background-opacity = 0.9
 # gtk-single-instance = true             # Speeds up new windows.
 
